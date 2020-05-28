@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="effect.css">
+    <title>rain and fog effect</title>
+</head>
+
+<body>
+
+    <div class="back">
+        <div class="obj">
+            <div class="backimg">
+                <div class="clouds">
+                    <img src="./img/cloud5.png" style="--i:3" alt="">
+                    <img src="./img/cloud1.png" style="--i:2" alt="">
+                    <img src="./img/cloud5.png" style="--i:4" alt="">
+                    <img src="./img/cloud1.png" style="--i:8" alt="">
+                    <img src="./img/cloud5.png" style="--i:5" alt="">
+                    <img src="./img/cloud1.png" style="--i:9" alt="">
+                    <img src="./img/cloud5.png" style="--i:6" alt="">
+                    <img src="./img/cloud1.png" style="--i:7" alt="">
+                </div>
+
+                <div class="rains" num="100" duar="1"></div>
+
+                <div class="introduction">
+                    <div class="tittle">
+                        <div class="contain">
+                            <h1 id="h-1">Hi this is rain and fog effect</h1>
+                            <p>Is my practice work Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi et
+                                placeat, atque inventore optio natus. Unde assumenda iusto voluptates dolores?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-btn">
+                    <div class="hamburger-btn">
+                        <div class="btn"></div>
+                    </div>
+                </div>
+
+                <div class="list">
+                    <div class="list-block">
+                        <div class="js">
+                            <h1>Javascript</h1>
+                        </div>
+                        <div class="css">
+                            <h1>Css</h1>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    
+    <script>
+
+        (function (w, d) {
+
+
+            //--------- 下雨特效-----------
+            let rains = d.querySelector('.rains')
+            let num = rains.getAttribute('num')
+            let duar = rains.getAttribute('duar')
+            let rainwidth = rains.clientWidth
+
+            droprain();
+
+            //--------- 生成下雨div----------
+            function droprain() {
+                rains.innerHTML = '';
+                for (i = 1; i < num; i++) {
+                    let raindiv = d.createElement('div');
+                    raindiv.classList.add('rain')
+                    raindiv.style.cssText = `
+                    transform:translate(${rainwidth * Math.random() - 10}px,0);
+                    animation:drop ${duar * Math.random() + 1}s linear infinite;
+                    `
+                    rains.appendChild(raindiv)
+                }
+            }
+
+            //---------menu-open------------
+
+
+            let menubtn = document.querySelector('.hamburger-btn')
+            let listmenu=document.querySelector('.list')
+            let menuopen = false
+            menubtn.addEventListener('click', () => {
+                if (!menuopen) {
+                    menubtn.classList.add('open');
+                    listmenu.classList.add('active')
+                    menuopen = true;
+                    
+                } else {
+                    menubtn.classList.remove('open');
+                    listmenu.classList.remove('active')
+                    menuopen = false;
+                    
+                }
+
+            })
+
+
+        })(window, document)
+
+    </script>
+</body>
+
+</html>

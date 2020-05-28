@@ -1,0 +1,241 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.backimg
+{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./img/back.jpg);
+    background-size: cover;
+    background-position: bottom center;
+}
+
+.backimg>.clouds
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.backimg>.clouds>img
+{
+    position: absolute;
+    height: 50vh;
+    bottom: 0%;
+    max-width: 100%;
+    animation: fly calc(4s*var(--i)) linear infinite;
+    opacity: 0.05;
+}
+
+@keyframes fly
+{
+    0%
+    {
+        transform: translateX(-100%);
+    }
+    100%
+    {
+        transform: translateX(300%);
+    }
+}
+
+.rains
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rains>.rain
+{
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    width: 1px;
+    height: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 50px;
+    opacity: 0.5;
+    top: -10%;
+    animation:  linear infinite;
+}
+
+@keyframes drop
+{
+    0%
+    {
+        top: -20%;
+        background-color: rgb(255, 255, 255);
+        opacity: 0.3;
+    }
+
+    100%{
+        top: 110%;
+        background-color: white;
+        opacity: 0.5;
+    }
+}
+
+.introduction
+{
+    position: absolute;
+    max-width: 740px;
+}
+
+.introduction>.tittle
+{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.tittle>.contain
+{
+    /* background-color: rgb(37, 37, 37); */
+    padding: 30px;
+    margin: 20px;
+    line-height: 3em;
+    text-align: justify;
+}
+
+.contain>h1,.contain>p
+{
+    color: white;
+}
+
+.contain>h1
+{
+    margin-bottom: 20px;
+}
+
+.contain>p
+{
+    font-size: 24px;
+    text-indent: 2em;
+}
+
+.menu-btn
+{
+    position: absolute;
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    z-index: 9999;
+}
+
+.hamburger-btn
+{
+    width: 50px;
+    height: 50px;
+    margin: 50px;
+    cursor: pointer;
+    border: 3px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(156, 70, 36, 0.808);
+    transition: all 0.3s ease-in;
+}
+
+.btn::after,
+.btn::before
+{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(156, 70, 36, 0.808);
+    transition: all 0.3s ease-in;
+}
+
+.btn::after
+{
+    transform: translateY(-10px);
+}
+
+.btn::before
+{
+    transform: translateY(10px);
+}
+
+.hamburger-btn.open .btn
+{
+    transform: translateX(-50px);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.hamburger-btn.open .btn::after
+{
+    transform: rotate(45deg) translate(35px,-35px);
+}
+
+.hamburger-btn.open .btn::before
+{
+    transform: rotate(-45deg) translate(35px,35px);
+}
+
+.list
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.list-block
+{
+    height: 70%;
+    width: 70%;
+    background-color: rgb(22, 22, 22);
+    /* opacity: 0.8; */
+    border: 1px solid black;
+    box-shadow: 0 2px 5px rgb(32, 32, 32);
+    display: flex;
+    justify-content: center;
+}
+
+.list.active
+{
+    visibility: initial;
+    opacity: 1;
+}
+
+.list-block>div
+{
+    padding: 50px;
+    margin: auto;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    transition: all 0.5s ease-in-out;
+}
+
+.list-block>div:hover
+{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    transform: rotateY(360deg);
+}
+
